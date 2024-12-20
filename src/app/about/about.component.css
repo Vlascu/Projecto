@@ -1,0 +1,53 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+    min-height: 100vh; /* Ensure it covers the full viewport height if content is small */
+}
+
+.elevated-box {
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 900px;
+    width: auto; /* Allow it to resize with content */
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+.text-section {
+    flex: 1;
+    min-width: 300px; /* Ensure proper scaling for smaller screens */
+}
+
+.text-section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.text-section p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.image-section {
+    flex: 1;
+    text-align: center;
+    min-width: 300px; /* Ensure proper scaling for smaller screens */
+}
+
+.image-section img {
+    max-width: 65%;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,68 @@
+<div class="projects-container">
+    <button class="fetch-button" (click)="fetchProjects()">Fetch Projects</button>
+
+    <div class="project-cards">
+      <div class="project-card" *ngFor="let project of projects" (click)="goToProject(project.html_url)">
+        <h3 class="project-name">{{ project.name }}</h3>
+        <p class="project-description">{{ project.description }}</p>
+        <span class="tooltip">Click to go to GitHub</span>
+  
+        <div class="languages-container">
+            <div *ngFor="let lang of project.languages">
+                <div *ngIf="lang.name !== 'QMake' && lang.name !== 'Batchfile'" class="language-card">
+                  <img [src]="getLanguageLogos(lang.name)[0]" alt="{{ lang.name }} logo" class="language-logo"/>
+                  <span>{{ lang.percentage | number: '1.0-1' }}%</span>
+                </div>
+              </div>
+        </div>
+  
+        <div class="buttons-container">
+          <button class="upload-photos-button" (click)="openUploadModal(project)">Upload Photos</button>
+          <button class="see-photos-button" (click)="openPhotosModal(project)">See Photos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showUploadModal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Upload Photos for {{ currentProject?.name }}</h2>
+      <div
+        class="drop-area"
+        (dragover)="onDragOver($event)"
+        (drop)="onDrop($event)"
+        (dragleave)="onDragLeave($event)"
+      >
+        <p>Drag and drop project images here or click to select files</p>
+        <input type="file" (change)="onFileSelect($event)" multiple hidden #fileInput>
+        <button (click)="fileInput.click()">Select Files</button>
+      </div>
+      <button (click)="closeUploadModal()">Close</button>
+    </div>
+  </div>
+  
+  <div *ngIf="showPhotosModal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Photos for {{ currentProject?.name }}</h2>
+      <div *ngIf="currentProject?.photos?.length === 0">No photos uploaded yet.</div>
+      <ul *ngIf="currentProject?.photos?.length > 0">
+        <li *ngFor="let photo of currentProject.photos">
+            <img
+            [src]="photo"
+            alt="Uploaded photo"
+            class="uploaded-photo"
+            (click)="openLargeImage(photo)"
+          />
+        </li>
+      </ul>
+      <button (click)="closePhotosModal()">Close</button>
+    </div>
+  </div>
+
+  <div *ngIf="showLargeImageModal" class="modal-overlay">
+    <div class="modal-content">
+      <img [src]="largeImageUrl" alt="Large Image" class="large-image"/>
+      <button (click)="closeLargeImageModal()">Close</button>
+    </div>
+  </div>
+  
