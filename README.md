@@ -1,64 +1,100 @@
 # Projecto
-Web portfolio that fetches my Github's projects.
+Web portfolio that fetches Github projects.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
+## Overview
+This project consists of a backend server and a frontend Angular application. It allows users to interact with a MongoDB database and requires a GitHub API key to fetch specific data. Below are the instructions to set up and run the project.
 
-## Development server
+---
 
-To start a local development server, run:
+## Backend: Local Server
 
-```bash
-ng serve
-```
+### Location
+- The backend server is located in the `server` subfolder.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### File
+- `server.js` is the main file for running the backend.
 
-## Code scaffolding
+### Steps to Run the Backend
+1. Navigate to the `server` folder:
+   ```bash
+   cd Projecto/server
+   ```
+2. Run the server using Node.js:
+   ```bash
+   node server.js
+   ```
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Prerequisites
+- Ensure you have [Node.js](https://nodejs.org/) installed.
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Database: MongoDB
 
-```bash
-ng generate --help
-```
+### Installation Guide
+1. Download and install MongoDB Community Edition from [MongoDB Download Center](https://www.mongodb.com/try/download/community).
+2. Follow the platform-specific instructions to complete the installation:
+   - [Windows Installation](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/)
+   - [macOS Installation](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/)
+   - [Linux Installation](https://www.mongodb.com/docs/manual/administration/install-on-linux/)
 
-## Building
+### Create and Connect Database
+1. Start the MongoDB server:
+   ```bash
+   mongod
+   ```
+2. Open a new terminal and connect to MongoDB using the shell:
+   ```bash
+   mongo
+   ```
+3. Create a database named `projecto`:
+   ```javascript
+   use projecto
+   ```
+4. Add collections or data as needed for testing.
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## Frontend: Angular Application
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Steps to Run the Frontend
+1. Navigate to the project folder containing the Angular application:
+   ```bash
+   cd Projecto
+   ```
+2. Serve the application locally:
+   ```bash
+   ng serve -o
+   ```
+   This will automatically open the application in your default web browser.
 
-## Running unit tests
+### Prerequisites
+- Ensure you have [Angular CLI](https://angular.io/cli) installed:
+  ```bash
+  npm install -g @angular/cli
+  ```
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## GitHub API Key Configuration
 
-## Running end-to-end tests
+### Location
+- In the file `projects.component.ts`, you need to provide your GitHub API key and GitHub link.
 
-For end-to-end (e2e) testing, run:
+### Steps to Configure
+1. Open `projects.component.ts` in a code editor.
+2. Replace the placeholder with your GitHub API key:
+   ```typescript
+   const githubApiKey = 'YOUR_GITHUB_API_KEY';
+   const githubLink = 'YOUR_GITHUB_PROFILE_LINK';
+   ```
+3. Save the changes.
 
-```bash
-ng e2e
-```
+**Note:** For security reasons, the GitHub API key is not included in the repository. Each user must use their own credentials.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## Additional Notes
+- Ensure all dependencies for both the backend and frontend are installed by running `npm install` in their respective directories.
+- For issues or troubleshooting, refer to the official documentation for Node.js, MongoDB, or Angular CLI.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-Web portfolio fetching my Github's projects.
->>>>>>> fb48f668ceace16b4897bb77a6b68db2fd4a6b33
->>>>>>> 983b3821 (Initial commit)
